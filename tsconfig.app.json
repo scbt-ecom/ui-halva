@@ -28,6 +28,6 @@
       "$/*": ["lib/*"]
     }
   },
-  "include": ["src"],
+  "include": ["vite-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.jsx", ".next/types/**/*.ts", "src", "lib"],
   "exclude": ["node_modules"]
 }

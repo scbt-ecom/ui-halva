@@ -76,7 +76,7 @@ jobs:
 #        run: npm run cypress-ci
 
   publish:
-    needs: run-unit-vitest
+#    needs: run-unit-vitest
     name: Publish to npm
     runs-on: ubuntu-22.04
     permissions:

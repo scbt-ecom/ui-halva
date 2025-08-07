@@ -1,0 +1,104 @@
+name: build-publish-to-npm
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build-ui:
+    name: Build project
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+
+      - name: Fix prettier
+        run: pnpm prettier
+
+      - name: Lint Code
+        run: pnpm lint
+
+      - name: Build 🏗️
+        run: pnpm build
+
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: dist
+          retention-days: 1
+
+  run-unit-vitest:
+    needs: build-ui
+    name: Vitest Unit Test runner
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: dist
+
+      - name: Running tests 🤞
+        run: npm run vitest-ci
+
+#  run-ui-cypress:
+#    needs: run-unit-vitest
+#    name: Cypress UI Test runner
+#    runs-on: ubuntu-22.04
+#    steps:
+#      - name: Checkout 🛎️
+#        uses: actions/checkout@v4
+#
+#      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+#        uses: ./.github/workflows/setup-node
+#
+#      - name: Download build artifacts
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: build-output
+#          path: dist
+#
+#      - name: Running tests
+#        run: npm run cypress-ci
+
+  publish:
+    needs: run-unit-vitest
+    name: Publish to npm
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write # GitHub release
+      issues: write # Комментирование issues
+      pull-requests: write # Комментирование PR
+      id-token: write # OIDC для npm provenance
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: dist
+
+      - name: Publish with Semantic Release 🚀
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release

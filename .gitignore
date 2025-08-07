@@ -6,11 +6,22 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
+build-storybook.log*
 node_modules
+lib/shared/ui/icon/sprite.gen.ts
+package-lock.json
+pnpm-lock.yaml
 dist
 dist-ssr
+storybook-static
 *.local
+*.tsbuildinfo
+coverage
+
+env
+tsconfig.tsbuildinfo
+tsconfig.node.tsbuildinfo
+*.timestamp*
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +33,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+*.docs.mdx

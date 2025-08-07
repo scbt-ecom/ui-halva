@@ -2,9 +2,6 @@
   "name": "@scbt-ecom/ui-halva",
   "version": "0.0.1",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -16,6 +13,14 @@
     "lint": "eslint . --quiet",
     "prettier": "prettier --write .",
     "ts-check": "pnpm exec tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/build-types/primitives/index.d.ts",
+      "import": "./dist/primitives/index.js",
+      "require": "./dist/primitives/index.js"
+    },
+    "./style.css": "./dist/style.css"
   },
   "peerDependecies": {
     "react": "^18.3.1",
@@ -41,6 +46,10 @@
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/parser": "^8.11.0",
     "@vitejs/plugin-react": "^4.6.0",
+    "semantic-release": "^24.2.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
     "clsx": "2.1.1",

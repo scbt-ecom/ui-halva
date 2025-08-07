@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import typeChecker from 'vite-plugin-checker'
 import dts from 'vite-plugin-dts'
-import { cwd } from 'process'
+import { cwd } from 'node:process'
 import { peerDependecies, devDependencies } from './package.json'
 import { visualizer } from 'rollup-plugin-visualizer'
 import glob from 'fast-glob'
@@ -12,7 +12,7 @@ const entries = await glob('lib/**/*.{ts,tsx,css}')
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), dts({ include: ['lib'], outDir: resolve(cwd(), 'dist/types') }), typeChecker({ typescript: true })],
+  plugins: [react(), dts({ include: ['lib'], outDir: resolve(cwd(), 'dist/build-types') }), typeChecker({ typescript: true })],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),

@@ -30,6 +30,9 @@
     "@eslint/compat": "^1.2.1",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.13.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
     "@storybook/addon-actions": "^8.2.10",
     "@storybook/addon-console": "^3.0.0",
     "@storybook/addon-docs": "^8.4.7",
@@ -46,10 +49,6 @@
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/parser": "^8.11.0",
     "@vitejs/plugin-react": "^4.6.0",
-    "semantic-release": "^24.2.0",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.1",
-    "@semantic-release/npm": "^12.0.1",
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
     "clsx": "2.1.1",
@@ -64,12 +63,16 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-storybook": "^0.10.1",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "fast-glob": "^3.3.3",
     "globals": "^15.11.0",
+    "lefthook": "^1.11.13",
     "postcss": "^8.4.40",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "semantic-release": "^24.2.0",
     "storybook": "^8.2.6",
     "tailwind-merge": "2.4.0",
     "tailwindcss": "^3.4.7",
@@ -80,9 +83,9 @@
     "vite": "^5.3.4",
     "vite-plugin-checker": "^0.7.2",
     "vite-plugin-dts": "^4.0.2",
-    "fast-glob": "^3.3.3",
-    "rollup-plugin-visualizer": "^6.0.3",
-    "lefthook": "^1.11.13"
+    "react-hook-form": "^7.53.1",
+    "@hookform/resolvers": "^3.9.0",
+    "zod": "^3.23.8"
   },
   "sideEffects": [
     "**/*.css"
@@ -107,6 +110,8 @@
   },
   "homepage": "https://github.com/scbt-ecom/ui-halva#readme",
   "pnpm": {
-    "onlyBuiltDependencies": ["lefthook"]
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
   }
 }

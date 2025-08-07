@@ -11,6 +11,6 @@ export type TypographyProps = TypographyConfig & {
 export const Typography = polymorphicForwardRef<'div', TypographyProps>(
   ({ as, variant, textFormat, className, ...props }, ref) => {
     const Element = as ?? 'div'
-    return <Element ref={ref} className={cn(typographyConfig({ variant, textFormat }), className, '')} {...props} />
+    return <Element ref={ref} className={cn(typographyConfig({ variant, textFormat }), className)} {...props} />
   }
 )

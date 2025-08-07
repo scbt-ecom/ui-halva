@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-import { headingVariants, textVariants } from './lib/shared/constants'
+import { borderRadius, headingVariants, textVariants } from './lib/shared/constants'
 
 //Todo:нужно добавить эти куда либо //////////////////////////////////////////
 // 'title-xxs-600': ['18px', { lineHeight: '28px', fontWeight: '600' }],
@@ -14,6 +14,7 @@ const tailwindConfig: Config = {
         mobile: { max: '1187px' },
         desktop: '1188px'
       },
+      borderRadius: borderRadius,
       fontSize: {
         ...textVariants,
         ...headingVariants

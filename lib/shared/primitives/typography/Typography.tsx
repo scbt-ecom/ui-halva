@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
-import { cn } from '../../utils'
 import { type TypographyConfig, typographyConfig } from './model'
 import { polymorphicForwardRef } from '$/shared/types'
+import { cn } from '$/shared/utils'
 
 export type TypographyProps = TypographyConfig & {
   children: ReactNode

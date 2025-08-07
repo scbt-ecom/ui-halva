@@ -15,6 +15,9 @@ export const textVariants: TextFontConfig = {
   'xxxs-500': ['10px', { lineHeight: '12px', fontWeight: '500' }]
 } as const
 
+// 'title-xxs-600': ['18px', { lineHeight: '28px', fontWeight: '600' }],
+// 'title-xxs': ['18px', { lineHeight: '28px', fontWeight: '500' }]
+
 export const headingVariants: HeadingFontConfig = {
   'h1-600': ['46px', { lineHeight: '58px', fontWeight: '600' }],
   'h1-500': ['46px', { lineHeight: '58px', fontWeight: '500' }],

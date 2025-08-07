@@ -68,7 +68,18 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.11.0",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vite-plugin-checker": "^0.7.2",
+    "vite-plugin-dts": "^4.0.2",
+    "fast-glob": "^3.3.3",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "lefthook": "^1.11.13"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "directories": {
+    "lib": "lib"
   },
   "overrides": {
     "esbuild": "0.24.0"
@@ -85,5 +96,8 @@
   "bugs": {
     "url": "https://github.com/scbt-ecom/ui-halva/issues"
   },
-  "homepage": "https://github.com/scbt-ecom/ui-halva#readme"
+  "homepage": "https://github.com/scbt-ecom/ui-halva#readme",
+  "pnpm": {
+    "onlyBuiltDependencies": ["lefthook"]
+  }
 }

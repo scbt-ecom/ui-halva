@@ -1,13 +1,16 @@
-import { type HTMLAttributes, type ReactNode } from 'react'
-import { type ElementVariant, type TypographyConfig, typographyConfig } from './model'
-import { cn } from '$/shared/utils'
+import { type ReactNode } from 'react'
+import { cn } from '../../utils'
+import { type TypographyConfig, typographyConfig } from './model'
+import { polymorphicForwardRef } from '$/shared/types'
 
-export interface TypographyProps<Element extends ElementVariant> extends HTMLAttributes<Element>, TypographyConfig {
+export type TypographyProps = TypographyConfig & {
   children: ReactNode
-  as?: Element
+  className?: string
 }
 
-export const Typography = <Element extends ElementVariant>({ as, children, variant }: TypographyProps<Element>) => {
-  const Element = as ?? 'p'
-  return <Element className={cn(typographyConfig({ variant }))}>{children}</Element>
-}
+export const Typography = polymorphicForwardRef<'div', TypographyProps>(
+  ({ as, variant, textFormat, className, ...props }, ref) => {
+    const Element = as ?? 'div'
+    return <Element ref={ref} className={cn(typographyConfig({ variant, textFormat }), className, '')} {...props} />
+  }
+)

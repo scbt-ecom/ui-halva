@@ -1,1 +1,3 @@
-export { HTML, type HTMLProps, type TypographyProps, Typography } from './typography'
+export * from './typography'
+export * from './heading'
+export * from './button'

@@ -42,26 +42,26 @@ export const AllVariants = {
     const variations = Object.entries(textVariants) as [FontParagraphLiterals, FontConfigTuple][]
     return (
       <div className='flex flex-col'>
-        <ul className='grid list-none grid-cols-5 gap-6 rounded-t-md bg-blue-800 p-4 text-center italic text-white'>
-          <li>Название</li>
-          <li>Размер</li>
+        <ul className='grid list-none grid-cols-5 gap-12 rounded-t-md bg-blue-800 p-4 text-center italic text-white'>
+          <li>Токен</li>
+          <li>Размер текста</li>
           <li>Жирность</li>
-          <li>Расстояние</li>
-          <li>Отображение</li>
+          <li>Межстрочное расстояние</li>
+          <li>Визуальное отображение</li>
         </ul>
 
-        <div className='flex flex-col gap-2 rounded-b-md border bg-blue-50'>
+        <div className='flex flex-col gap-2 rounded-b-md border bg-gray-100'>
           {variations.map(([key, tuple]) => {
             const [fontSize, { lineHeight, fontWeight }] = tuple
 
             return (
               <ul
-                className='grid list-none grid-cols-5 gap-6 border-b border-gray-400 px-4 py-2 text-center last:border-0'
+                className='grid list-none grid-cols-5 items-center gap-6 border-b border-gray-300 px-4 py-3 text-center last:border-0'
                 key={key}
               >
                 <li>{key}</li>
                 <li>{fontSize}</li>
-                <li>{fontWeight === '600' ? 'SemiBold' : 'Medium'}</li>
+                <li>{fontWeight === '600' ? 'SemiBold / 600' : 'Medium  / 500'}</li>
                 <li>{lineHeight}</li>
                 <Typography variant={key}>Текст</Typography>
               </ul>

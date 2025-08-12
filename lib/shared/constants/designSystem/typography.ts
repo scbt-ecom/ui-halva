@@ -37,3 +37,9 @@ export const headingVariants: HeadingFontConfig = {
   'h6-600': ['22px', { lineHeight: '28px', fontWeight: '600' }],
   'h6-500': ['22px', { lineHeight: '28px', fontWeight: '500' }]
 } as const
+
+export const fontFamily = {
+  sans: ['var(--ff-roboto)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  roboto: ['var(--ff-roboto)', 'sans-serif'],
+  montserrat: ['var(--ff-montserrat)', 'sans-serif']
+}

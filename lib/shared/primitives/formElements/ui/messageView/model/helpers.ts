@@ -5,6 +5,9 @@ export const messageViewConfig = cva('', {
     variant: {
       simple: '',
       error: ''
+    },
+    disabled: {
+      true: ''
     }
   }
 })

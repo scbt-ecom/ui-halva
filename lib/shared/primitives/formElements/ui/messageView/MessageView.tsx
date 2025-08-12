@@ -1,11 +1,10 @@
-import { forwardRef, type HTMLAttributes, type ReactElement } from 'react'
-import { type FieldError } from 'react-hook-form'
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react'
 import { type MessageViewConfig, messageViewConfig } from './model'
 import { cn } from '$/shared/utils'
 
 export interface MessageViewProps extends MessageViewConfig, HTMLAttributes<HTMLDivElement> {
   className?: string
-  children: string | FieldError['message'] | ReactElement
+  children: ReactNode
 }
 
 export const MessageView = forwardRef<HTMLDivElement, MessageViewProps>(({ variant, className, ...props }, ref) => {

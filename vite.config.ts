@@ -7,12 +7,20 @@ import { cwd } from 'node:process'
 import { peerDependecies, devDependencies } from './package.json'
 import { visualizer } from 'rollup-plugin-visualizer'
 import glob from 'fast-glob'
+import { viteAllowedIconsPlugin } from './plugins'
+import svgr from 'vite-plugin-svgr'
 
 const entries = await glob('lib/**/*.{ts,tsx,css}')
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), dts({ include: ['lib'], outDir: resolve(cwd(), 'dist/build-types') }), typeChecker({ typescript: true })],
+  plugins: [
+    react(),
+    svgr(),
+    viteAllowedIconsPlugin(),
+    dts({ include: ['lib'], outDir: resolve(cwd(), 'dist/build-types') }),
+    typeChecker({ typescript: true })
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),

@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Roboto:wght@400;500;600;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --ff-roboto: 'Roboto', sans-serif;
+  --ff-roboto: 'Roboto';
+  --ff-montserrat: 'Montserrat';
 }
 
 * {
@@ -12,8 +15,14 @@
   margin: 0;
 }
 
+@layer base {
+  html {
+    @apply font-sans;
+  /*TODO: Поставить 292929 по умолчанию цвет для всего текста*/
+  }
+}
+
 body,
 html {
-  font-family: var(--ff-roboto), sans-serif;
   color: #292929;
 }

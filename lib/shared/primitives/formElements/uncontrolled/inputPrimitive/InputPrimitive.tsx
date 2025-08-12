@@ -1,10 +1,10 @@
-import { forwardRef, type HTMLAttributes, useId } from 'react'
+import { forwardRef, type InputHTMLAttributes, useId } from 'react'
 import { Label } from '../../ui'
-import { type ExternalHandlers, type InputPrimitiveClasses } from './model'
-import { type DeepPartial } from '$/shared/types'
+import type { ExternalHandlers, InputPrimitiveClasses } from './model'
+import type { DeepPartial } from '$/shared/types'
 import { cn } from '$/shared/utils'
 
-export interface InputPrimitiveProps extends HTMLAttributes<HTMLInputElement> {
+export interface InputPrimitiveProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'placeholder' | 'size' | 'className'> {
   label: string
   externalHandlers?: ExternalHandlers
   invalid?: boolean

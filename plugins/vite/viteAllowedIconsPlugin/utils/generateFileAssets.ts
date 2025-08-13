@@ -1,13 +1,13 @@
 import { execSync } from 'child_process'
 import { writeFileSync } from 'fs'
 import { relative, sep } from 'path'
-import { findIcon } from './findIcon'
+import { find } from '../../utils'
 
 export const generateFileAssets = (staticPath: string, outputDir: string) => {
   const icons: Record<string, string[]> = {}
   const iconsFlatten: string[] = []
 
-  findIcon(staticPath, /\.svg/, (filename) => {
+  find(staticPath, /\.svg/, (filename) => {
     const [root, icon] = relative(staticPath, filename).split(sep)
 
     if (!icons[root]) {
@@ -20,12 +20,15 @@ export const generateFileAssets = (staticPath: string, outputDir: string) => {
     iconsFlatten.push(iconName)
   })
 
+  const generic = '<T extends keyof typeof allowedIcons.group>'
   const content = `
-    export type AllowedIcons = (typeof allowedIcons.flatten)[number]
-      export const allowedIcons = {
-        group: ${JSON.stringify(icons, null, 2)},
-        flatten: ${JSON.stringify(iconsFlatten, null, 2)}
-      } as const
+export type AllowedIcons = (typeof allowedIcons.flatten)[number]
+export type AllowedIconsGroup${generic} = (typeof allowedIcons.group)[T][number]
+
+export const allowedIcons = {
+  group: ${JSON.stringify(icons, null, 2)},
+  flatten: ${JSON.stringify(iconsFlatten, null, 2)}
+} as const
     `
 
   writeFileSync(`${outputDir}/allowedIcons.ts`, content.trim(), 'utf-8')

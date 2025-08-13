@@ -4,10 +4,10 @@ import type { Plugin } from 'vite'
 import { Logger } from '../utils'
 import { generateFileAssets, generateFileMap } from './utils'
 
-const STATIC_DIR = 'static'
-const OUTPUT_DIR = 'lib/shared/primitives/icon'
+export const STATIC_DIR = 'static'
+export const OUTPUT_DIR = 'lib/shared/primitives/icon'
 
-type AllowedIconsPluginOptions = {
+export type AllowedIconsPluginOptions = {
   inputPath?: string
   outputPath?: string
 }
